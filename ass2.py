@@ -13,9 +13,17 @@ def read_data(file_path, percentage):
 
 
 # Calculate Euclidean distance between two data points
+import math
+
+
 def euclidean_distance(point1, point2):
-    squared_distance = sum((point1[i] - point2[i]) ** 2 for i in range(len(point1)))
-    return math.sqrt(squared_distance)
+    """Calculate the Euclidean distance between two points."""
+    if len(point1) != len(point2):
+        raise ValueError("The dimensions of the points must be the same.")
+
+    squared_distances = [(a - b) ** 2 for a, b in zip(point1, point2)]
+    distance = math.sqrt(sum(squared_distances))
+    return distance
 
 
 # Initialize random centroids
